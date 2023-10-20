@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-#from myCommands import MyCommands
 
 # # # # # # # # # # # # # # # # #
 
@@ -9,9 +8,9 @@ intents.members = True
 intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
-#bot.add_cog(MyCommands(bot))
+bot.load_extension('myCommands')
 
-with open('token.txt', 'r') as f:
+with open('discordToken.txt', 'r') as f:
     token = f.read()
 
 # # # # # # # # # # # # # # # # #
@@ -20,10 +19,7 @@ with open('token.txt', 'r') as f:
 async def add(ctx, a: int, b: int):
     await ctx.send(a + b)
 
-@bot.command()
-async def multiply(ctx, a: int, b: int):
-    await ctx.send(a * b)
-
+# # # # # # # # # # # # # # # # #
 
 def run():
 
